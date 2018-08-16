@@ -1,0 +1,3296 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+
+/*  Тут нужно порешать со шрифтами Опен Санс, они не работают в лезер ы работают в мадалке */
+@font-face {
+    font-family: 'Open Sans';
+    src: url(fonts/OpenSans-Regular.ttf);
+    font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url(fonts/OpenSans-SemiBold.ttf);
+    font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url(fonts/OpenSans-Bold.ttf);
+    font-weight: 700;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: "OpenSansRegular";
+	src: url(fonts/OpenSans-Regular.ttf) format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "OpenSansSemiBold";
+	src: url(fonts/OpenSans-SemiBold.ttf) format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "OpenSansBold";
+	src: url(fonts/OpenSans-Bold.ttf) format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+
+@font-face {
+    font-family: 'Mistral';
+    src: url(fonts/MISTRAL.TTF);
+    font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "MyriadProRegular";
+	src: url(fonts/MyriadProRegular.ttf) format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+.workZone{
+	width: 1230px;
+	margin: 0 auto;
+}
+body{
+	max-width: 1920px;
+	margin: 0 auto;
+	min-width: 320px;
+}
+/*---------------- Шапка сайта------------------*/
+header{
+	background: url(img/first_fon.png) no-repeat top center;
+	background-size: cover;
+	margin: 0 auto;
+}
+.headerWrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+.mainLogotip{
+	width: 9%;
+	margin: 1% 0 0 1%;
+	padding-bottom: 10%;
+	background: url(img/logotip.png) no-repeat center center;
+	transition: background 2s;
+	background-size: contain;
+	cursor: pointer;
+}
+.mainLogotip:hover{
+	width: 9%;
+	margin: 1% 0 0 1%;
+	padding-bottom: 10%;
+	background: url(img/morda.png) no-repeat center center;
+	background-size: contain;
+	cursor: pointer;
+}
+.navigation{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1% 0 2%;
+	width: 100%;
+}
+.navbar{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 68.5%;
+}
+.navbar li{
+	list-style-type: none;
+}
+.navbar li a{
+	text-decoration: none;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #fff;
+}
+.bb{
+	position: relative;
+	background-color: rgba(255, 255, 255, 0);
+	width: 100%;
+	padding-bottom: 3px;
+	overflow: hidden;
+}
+.bb:before{
+	content: '';
+	display: block;
+	position: absolute;
+	color: #fff;
+    width: 0%;
+    height: 100%;
+	top: 0;
+    right: 0;
+    background: #fff;
+	transition: width .6s ease .4s;
+}
+
+.navbar li:hover .bb:before{
+	width: 100%;
+	left: 0;
+}
+
+
+.gamburger{
+	width: 6%;
+	margin: 1% 1% 0 0;
+	cursor: pointer;
+	display: none;
+	z-index: 99999999;
+	position: relative;
+}
+.burger{
+	width: 100%;
+	cursor: pointer;
+	z-index: 99999999;
+	position: relative;
+}
+.burger_line{
+	width: 100%;
+	padding-bottom: 6px;
+	background: #fff;
+	border-radius: 20px;
+	margin-bottom: 5px;
+}
+.not_line{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-bottom: 100%;
+	z-index: 9999999999999;
+	background: rgba(41, 8, 1, 0.1);
+	display: none;
+}
+.uno, .dos, .tres{
+    transition: opacity .3s ease-in-out;
+    transition: transform .1s ease-in-out;
+    transition: top .1s ease-in-out;
+    position: relative;
+}
+.dos{
+	top: 5%;
+}
+.substrate{
+	background-color: rgba(41, 8, 1, 0.9);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1000;
+	display: none;
+}
+.concealed_menu{
+	background: #290801;
+	border: 3px solid #fff;
+
+	max-height: 250px;
+	min-height: 250px;
+	min-width: 400px;
+	max-width: 400px;
+	overflow-y: auto;
+	position: fixed;
+	overflow: hidden;
+	z-index: 2000;
+	width: 44%;
+}
+.concealed_navbar{	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 5% 0;
+}
+.concealed_navbar li{
+	list-style-type: none;
+	position: relative;
+	margin-bottom: 3%;
+}
+.concealed_navbar li a{
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 23px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #fff;	
+}
+.concealed_navbar{
+	width: 100%;
+}
+.border_bottom{
+	position: relative;
+	background-color: rgba(255, 255, 255, 0);
+	width: 100%;
+	padding-bottom: 4px;
+	overflow: hidden;
+}
+.border_bottom:before{
+	content: '';
+	display: block;
+	position: absolute;
+	color: #fff;
+    width: 0%;
+    height: 100%;
+	top: 0;
+    right: 0;
+    background: #fff;
+	transition: width .3s ease .1s;
+}
+
+.concealed_navbar li:hover .border_bottom:before{
+	width: 100%;
+	left: 0;
+}
+
+
+
+.captionWrap{
+	margin: 7% 0 0.7%;
+	position: relative;
+	width: 100%;
+}
+.caption{
+	background: url(img/mazki.png) no-repeat center center;
+	background-size: contain;
+	width: 92%;
+	padding-bottom: 28.5%;
+	margin: 0 auto;
+}
+.captionText{
+	position: absolute;
+	width: 100%;
+	top: 42%;
+	left: 50.6%;
+	transform: translate(-50%,-50%);
+	font-size: 70px;
+	font-family: "Mistral";
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+}
+.Border{
+	border: 4px solid #fff;
+	width: 32.2%;
+	margin-bottom: 10%;
+	margin-left:  1%;
+}
+.Border a{
+	padding: 6% 0;
+	width: 95.5%;
+	margin: 2.5% auto;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	z-index: 2;
+	transition: background-color 0.3s;
+}
+.Border a:hover{
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.Border a:hover p {
+	color: #fff;
+}
+.Border a:hover .poi {
+	background-color: #fff;
+}
+.Border a p{
+	color: #290801;
+	font-size: 22px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: -1% 0 0;
+	z-index: 3;
+	transition: color 0.3s;
+}
+.poi{
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	background-color: #3e1006;
+	margin: 1px 6%;
+	transition: background-color 0.3s;
+}
+
+
+
+/*--------------- Преймущества ---------------*/
+.advantages{
+	width: 94.5%;
+	margin: 4.5% auto 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.advantagesBlocks{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 22.5%;
+}
+.advantagesBlocks span{
+	color: #3e1006;
+	text-align: center;
+	margin-top: 7%;
+	margin-left: 6%;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.advantagesBigText{
+	color: #3e1006;
+	text-align: center;
+	margin: 5.2% 0 0;
+	font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+.allaAdvImg{
+	width: 67%;
+	padding-bottom: 67%;
+	margin: 0 0 0 5.5%;
+}
+.one{
+	background: url(img/first.png) no-repeat center center;
+	background-size: contain;
+}
+.two{
+	background: url(img/second.png) no-repeat center center;
+	background-size: contain;
+}
+.three{
+	background: url(img/third.png) no-repeat center center;
+	background-size: contain;
+}
+.four{
+	background: url(img/fourth.png) no-repeat center center;
+	background-size: contain;
+}
+	
+
+/*--------------- Товары ---------------*/
+#price{
+	background: url(img/segundo.jpg) no-repeat top center;
+	background-size: cover;
+	margin: 0.5% auto;
+}
+.cost{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+}
+.priceName{
+	font-size: 60px;
+	font-family: "Mistral";
+	letter-spacing: 0.5px;
+	color: #3e1006;
+	text-transform: uppercase;
+    padding: 17% 0 0;
+}
+.priceWrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 1% 0 10% 0;
+}
+.priceBlock{
+	width: 30.3%;
+	padding: 0 0 2.5%;
+	margin: 3% 1.2% 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	box-shadow: 0 30px 22px -15px #dad4cf;
+}
+.allImages{
+	width: 84%;
+	padding-bottom: 86%;
+	margin-top: -1%;
+}
+.imagefirst{
+	background: url(img/portmone1.png) no-repeat center center;
+	background-size: contain;
+}
+.imagesecond{
+	background: url(img/portmone2.png) no-repeat center center;
+	background-size: contain;
+}
+.imagethird{
+	background: url(img/portmone3.png) no-repeat center center;
+	background-size: contain;
+}
+.imagefour{
+	background: url(img/portmone4.png) no-repeat center center;
+	background-size: contain;
+}
+.imagefive{
+	background: url(img/portmone5.png) no-repeat center center;
+	background-size: contain;
+}
+
+.allPriceText{
+	width: 100%;
+    padding: 0 5% 0 12%;
+}
+.priceTitle{
+	font-weight: 700;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	color: #3e1006;
+	line-height: 22px;
+	letter-spacing: 1px;
+	margin-bottom: 3%;
+	text-transform: uppercase;
+}
+.priceTextBlock p{
+	font-family: 'Open Sans', sans-serif;
+	line-height: 22px;
+	font-size: 14px;
+	color: #3e1006;
+	font-weight: 400;
+}
+.priceTextBlock span{
+	color: #3e1006;
+	font-weight: 600;
+}
+.priceTextBlock{
+	color: #3e1006;
+}
+.number{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 22px;
+	font-weight: 700;
+}
+.number span{
+	font-size: 14px;
+	color: #3e1006;
+}
+.number p{
+	font-size: 22px;
+	color: #3e1006;
+	font-weight: 600;
+}
+
+/*-------------Кнопка вызова модалки-------------*/
+.startButton{
+	border: 4px solid #3e1006;
+    width: 83%;
+    margin: 7% 0 0 6%;
+	cursor: pointer;
+}
+.link{
+	padding: 5% 0;
+	width: 95%;
+	margin: 3% auto;
+	background-color: #3e1006;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: background 0.3s;
+}
+.link:hover{
+	background: #fff;
+}
+.link:hover .priceModalText{
+	color: #3e1006;
+}
+.link:hover .pricepoi{
+	background-color: #3e1006;
+}
+.priceModalText{
+	color: #fff;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: color 0.3s;
+}
+.pricepoi{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background-color: #fff;
+	margin: 0 6%;
+	transition: background-color 0.3s;
+}
+
+
+
+/*--------------- Форма ---------------*/
+#thersero{
+	background: url(img/tersero.png) no-repeat top center;
+	background-size: cover;
+	margin: 0 auto;
+	margin: -5% auto 0;
+	position: relative;
+    padding-bottom: 15%;
+}
+
+.textAndFormWrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 97%;
+    padding: 21% 0 0;
+	margin: 0 0 0 2.5%;
+	position: relative;
+}
+.now{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 50%;
+}
+.nameTextForm{
+	font-size: 60px;
+	letter-spacing: 0.5px;
+	line-height: 22px;
+	font-family: "Mistral";
+	color: #3e1006;
+	text-transform: uppercase;
+	padding: 5% 0 4%;
+	margin: 0 0 0 1%;
+}
+.forTextForm{
+	color: #3e1006;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 46px;
+	font-family: 'Open Sans', sans-serif;
+	width: 90%;
+	margin: 6% 0 0 1.5%;
+	letter-spacing: 0.3px;
+}
+.forTextForm span{
+	color: #3e1006;
+	font-weight: 700;
+}
+
+.arrow{
+	background: url(img/arrow.png) no-repeat center center;
+	background-size: contain;
+	width: 16%;
+	padding-bottom: 10%;
+	position: absolute;
+	top: 79%;
+	left: 48%;
+}
+
+.mainForm{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+	background-color: #fff;
+	padding: 2.5%;
+	width: 31.2%;
+	margin-right: 1%;
+}
+.mainForm span{
+	color: #3e1006;
+	font-size: 48px;
+	font-family: "Mistral";
+	text-transform: uppercase;
+	font-weight: 600;
+	text-align: center;
+	margin: -1% 0 0 -1%;
+}
+.mainForm p{
+	color: #3e1006;
+	font-size: 38px;
+	font-family: "Mistral";
+	text-transform: uppercase;
+	text-align: center;
+	margin: -2% 0 4% 0%;
+}
+.forInput{
+	width: 99%;
+	margin-bottom: 6%;
+	border: 2px solid #e0dbd8;
+	background-color: #f7f7f7;
+	position: relative;
+}
+.forInput input{
+	font-size: 14px;
+	padding: 5% 0 7% 15%;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	outline: none;
+	color: #757575;
+	width: 100%;
+}
+.formIconLeft{
+	position: absolute;
+	top: 32%;
+	left: 5%;
+}
+.userIcon{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/user_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.phoneIcon{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/phone_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.emailIcon{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/email_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.zirochka{
+	width: 3%;
+	padding-bottom: 3%;
+	background: url(img/zirochka.png) no-repeat center center;
+	background-size: contain;
+	position: absolute;
+	top: 44%;
+	left: 93%;
+}
+
+.formBorder{
+	border: 4px solid #3e1006;
+	margin-top: 7%;
+}
+.formBorder a{
+	padding: 7% 0;
+	width: 95.5%;
+	margin: 2% auto;
+	background-color: #3e1006;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+.formBorder a:hover{
+	background-color: #fff;
+}
+.formBorder a:hover p{
+	color: #3e1006;
+}
+.formBorder a:hover .formPoint{
+	background-color: #3e1006;
+}
+.formBorder a p{
+	color: #fff;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-bottom: -1.5%;
+	transition: color 0.3s;
+}
+.formPoint{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background-color: #fff;
+	margin: 0 6%;
+	transition: background-color 0.3s;
+}
+
+/*--------------- Подарок ---------------*/
+#present{
+	width: 100%;
+	margin: 0;
+	padding: 0 0 5%;
+}
+.bag{
+	background: url(img/bag.png) no-repeat center center;
+	background-size: contain;
+	width: 42%;
+	padding-bottom: 44%;
+	margin: -5% 0 0 3%;
+}
+.presentWrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+    margin: -6% 0 0;
+	position: relative;
+}
+.presentText{
+	width: 42%;
+	margin: 0 0 0 -1.4%;
+}
+.presentText span{
+	color: #3e1006;
+	font-size: 60px;
+	line-height: 80px;
+	font-family: "Mistral";
+	text-transform: uppercase;
+}
+.presentText p{
+	color: #3e1006;
+	font-size: 32px;
+	line-height: 46px;
+	font-family: 'Open Sans', sans-serif;
+	margin: 8.8% 0 0 -1%;
+	width: 100%;
+}
+.pacunochok{
+	align-self: flex-end;
+	background: url(img/gift.png) no-repeat center center;
+	background-size: contain;
+	width: 13%;
+	padding-bottom: 27%;
+	position: relative;
+	left: -3%;
+}
+
+/*--------------- Инструменты и нити ---------------*/
+
+.instruments{
+	background: url(img/instruments.png) no-repeat top center;
+	background-size: contain;
+	width: 30%;
+	padding-bottom: 34%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.thread{
+	background: url(img/thread.png) no-repeat top center;
+	background-size: contain;
+	width: 7%;
+	padding-bottom: 23%;
+	position: absolute;
+	top: 53%;
+	right: 0;
+}
+
+
+/*--------------- Карусель ---------------*/
+
+#Gallery{
+	background-color: #F7F7F7;
+	padding: 1.5% 0 2.3%;
+}
+.commentsText{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 100%;
+	margin: 0.5% 0 3.5%;
+}
+.commentHeader{
+	color: #3E1006;
+	font-size: 60px;
+	line-height: 80px;
+	font-family: "Mistral", sans-serif;
+	text-transform: uppercase;
+	width: 60%;
+	margin: 0 0 0 3.2%;
+	letter-spacing:  0.6px;
+}
+.comArrowDiv{
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 13%;
+	margin: 0 1% 1.5% 0;
+}
+.comArrowText{
+	color: #3E1006;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	width: 83%;
+}
+.comArrowText:hover{
+	color: #8a4242;
+}
+.comArrow{
+	background: url(img/strelka.png) no-repeat top center;
+	width: 13%;
+	padding-bottom: 13%;
+	margin-left: 0%;
+	background-size: contain;
+}
+
+
+
+.review  {
+	width: 100%; 
+	overflow: hidden;
+	position: relative;
+	margin: 0;
+}
+.envelope {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+	position: relative;
+}
+.bloc{
+	width: 49%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+
+
+
+
+.carouselImage{
+	width: 16%;
+	padding-bottom: 16%;
+	cursor: pointer;
+	margin-left: 1%;
+}
+.carouselText{
+	width: 79%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 0 0 0 0;
+}
+.carouselTextName{
+	color: #3E1006;
+	font-size: 18px;
+	line-height: 13px;
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.carouselTextParagraph{
+	color: #433E3D;
+	font-size: 14px;
+	line-height: 24px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	width: 100%;
+	margin-top: 4%;
+    padding: 0 5% 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------Секция c картой--------------*/
+.allMap{
+	position: relative;
+	width: 100%;
+}
+.forMap{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+#map{
+	width: 100%;
+	padding-bottom: 29%;
+	background-size: contain;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.opacityMapBlock{
+	width: 44.5%;
+	padding-bottom: 29.2%;
+	background-color: #290801;
+	opacity: 0.8;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+}
+.zona{
+	width: 24%;
+	position: relative;
+	top: 0;
+	left: 19.5%;
+	z-index: 4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------Удаляем логотип Гугл слева внизу и текст
+на права использования в правом нижнем углу ------*/
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+.gmnoprint a, .gmnoprint span, .gm-style-cc {display:none;}
+.gmnoprint div {background:none !important;}
+
+
+.opacityText{
+	color: #fff;
+	font-size: 18px;
+	line-height: 26px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	z-index: 5;
+	display: block;
+	padding: 18% 0 0;
+	width: 100%;
+}
+.contacts{
+	font-size: 60px;
+	line-height: 80px;
+	font-family: "Mistral", sans-serif;
+	text-transform: uppercase;
+	letter-spacing:  0.6px;
+	padding: 1% 0 7%;
+}
+.forPhone span{
+	font-weight: 700;
+}
+.opacityTextMargin{
+	padding: 6% 0 9%;
+}
+.opacityTextMargin span{
+	display: block;
+}
+
+
+
+.opacityBorder{
+	border: 4px solid #fff;
+	width: 60%;
+}
+.reference{
+	padding: 5% 0;
+	width: 95.5%;
+	margin: 2% auto;
+	background-color: rgba(255, 255, 255, 1);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.reference:hover{
+	background-color: rgba(41, 8, 1, 0);
+}
+.reference:hover p{
+	color: #fff;
+}
+.reference:hover .opacityPoi{
+	background-color: #fff;
+}
+.reference p{
+	color: #290801;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: color 0.3s;
+}
+.opacityPoi{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background-color: #3E1006;
+	margin: 0 6%;
+	transition: background-color 0.3s;
+}
+
+
+
+
+/* --------- МОДАЛЬНАЯ ФОРМА ------ */ 
+.modal_form{
+	display: none;
+}
+.base{
+	background: #000;
+	opacity: 0.8;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1000;
+}
+.apparent{
+	background: #fff;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	overflow: hidden;
+	z-index: 2000;
+	width: 22%;
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 1.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+	border-radius: 5%;
+}
+.close{
+	background: url(img/modal_img/modalKrest.png) no-repeat center center;
+	width: 10%;
+	padding-bottom: 10%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.apparent span{
+	color: #3e1006;
+	font-size: 30px;
+	line-height: 40px;
+	font-family: "Mistral";
+	text-transform: uppercase;
+	font-weight: 400;
+	text-align: center;
+	margin: -1% 0 0 -1%;
+}
+.apparent form{
+	margin: 5% 0 0 0;
+}
+.bigInput{
+	width: 100%;
+	margin-bottom: 4%;
+	border: 2px solid #e0dbd8;
+	background-color: #f7f7f7;
+	position: relative;
+}
+.bigInput input{
+	font-size: 14px;
+	padding: 5% 0 5% 15%;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	outline: none;
+	color: #757575;
+	width: 100%;
+}
+.iconcontacts{
+	position: absolute;
+	top: 32%;
+	left: 5%;
+}
+.user2{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/user_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.phone2{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/phone_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.email2{
+	width: 6%;
+	padding-bottom: 6%;
+	background: url(img/email_icon.png) no-repeat center center;
+	background-size: contain;
+}
+.zirka{
+	width: 3%;
+	padding-bottom: 3%;
+	background: url(img/zirochka.png) no-repeat center center;
+	background-size: contain;
+	position: absolute;
+	top: 44%;
+	left: 93%;
+}
+
+.bigButton{
+	border: 4px solid #3e1006;
+	width: 100%;
+	margin: 5% auto 0;
+}
+.bigButton a{
+	padding: 5% 0;
+	width: 95.5%;
+	margin: 2% auto;
+	background-color: #3e1006;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+.bigButton a p{
+	color: #fff;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	transition: color 0.3s;
+}
+.circle{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background-color: #fff;
+	margin: 0 6%;
+	transition: background-color 0.3s;
+}
+
+
+.bigButton a:hover {
+	background-color: #fff;
+}
+.bigButton a:hover p{
+	color: #3e1006;
+}
+.bigButton a:hover .circle{
+	background-color: #3e1006;
+}
+
+
+
+
+
+/*----------------Футер-------------------*/
+
+footer{
+	background-color: #290801;
+	width: 100%;
+}
+.footerWrap{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 96%;
+	margin: 0 auto;
+}
+.footerLogo{
+	background: url(img/logotip.png) no-repeat center center;
+	background-size: contain;
+	width: 7.5%;
+	padding-bottom: 7%;
+	margin: 11% 0 2% 1.5%;
+}
+.company{
+	color: #F7F7F7;
+	font-size: 14px;
+	line-height: 26px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	margin-left: 12%;
+	margin: 9% 0 0 12%;
+}
+.futuline{
+	color: #F7F7F7;
+	font-size: 14px;
+	line-height: 26px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	margin: 9% 0 0 0;
+}
+.futuline span{
+	font-weight: 700;
+	cursor: pointer;
+}
+
+/*--------------- Модальное окно ---------------*/
+
+/*----------------Само окно----------------*/
+.overlay {
+	background: #000;
+	opacity: 0.8;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1000;
+}
+.visible {
+	background: #fff;
+	position: fixed;
+	left: 50.5%;
+	top: 46%;
+	transform: translate(-50%,-50%);
+	overflow: hidden;
+	z-index: 2000;
+	width: 44%;
+	max-height: 90vh;
+	overflow-y: auto;
+}
+
+
+
+
+/*-------------------Управление модалкой-------------------*/
+.krest{
+	background: url(img/modal_img/modalKrest.png) no-repeat center center;
+	background-size: contain;
+	width: 2%;
+	padding-bottom: 2%;
+	cursor: pointer;
+	position: absolute;
+	top: 3%;
+	right: 2%;
+	transition: all .3s;
+}
+.krest:hover{
+	transform: rotate(90deg);
+}
+.content {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 2%;
+	width: 100%;
+	position: relative;
+}
+.arrowLeft{
+	background: url(img/modal_img/modalleftarrow.png) no-repeat center center;
+    background-size: contain;
+	width: 3%;
+	padding-bottom: 3%;
+	position: absolute;
+	top: 38%;
+	left: 2%;
+	cursor: pointer;
+	transition: left .5s;
+}
+.arrowLeft:hover{
+	left: 1%;
+}
+.arrowRight{
+	background: url(img/modal_img/modalrightarrow.png) no-repeat center center;
+    background-size: contain;
+	width: 3%;
+	padding-bottom: 3%;
+	position: absolute;
+	top: 38%;
+	left: 48%;
+	cursor: pointer;
+	transition: left .5s;
+}
+.arrowRight:hover{
+	left: 49%;
+}
+
+/*-----------------Главная каруселька в модалке-------------------*/
+
+#win{
+	display: none;
+}
+
+.twoCarousels{
+	width: 51%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.firstCarousel{
+	width: 89%;
+	margin: 4% 0 0 0;
+}
+.carousel{
+	overflow: hidden;
+	position: relative;
+}
+.wrap{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	position: relative;
+}
+
+/*-----------------Превьюшная каруселька в модалке-------------------*/
+
+.secondCarousel{
+	width: 95%;
+	margin-top: 6%;
+}
+.preview{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.previewWrap{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	position: relative;
+}
+.previewBlock{
+	cursor: pointer;
+}
+.littleP{
+	margin: 15%;
+	width: 70%;
+	padding-bottom: 70%;
+}
+.previewActive{
+	box-shadow: 0 0 20px 8px #dad4cf ;
+}
+/*-----------------Правый блок-------------------*/
+
+.modalText{
+	width: 49%;
+	padding: 0 0 0 4%;
+}
+.tabs{
+	display: flex;
+	align-items: center;
+}
+.colorsText{
+	font-family: 'MyriadProRegular';
+	font-size: 18px;
+	color: #433E3D;
+	line-height: 50px;
+}
+.tab{
+	width: 10%;
+	padding-bottom: 5%;
+	margin-left: 5%;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+.negro{
+	background: #000;
+}
+.negro:hover{
+	background: linear-gradient(to bottom left, #000, #fff);
+}
+.brown{
+	background: #3E1006;
+}
+.brown:hover{
+	background: linear-gradient(to bottom left, #3E1006, #fff);
+}
+.active{
+	border: 2px solid #BDB2AB;
+}
+.modal_allPriceText{
+	width: 84%;
+}
+.MpriceTitle{
+	font-weight: 700;
+	font-size: 18px;
+	font-family: 'OpenSansBold', sans-serif;
+	color: #3e1006;
+	line-height: 22px;
+	letter-spacing: 0.5px;
+    margin: 10% 0 3% 1%;
+	text-transform: uppercase;
+}
+.forColor{
+	display: flex;
+	position: relative;
+}
+.color{
+	font-family: 'OpenSansSemiBold', sans-serif;
+	line-height: 22px;
+	font-size: 14px;
+	color: #3e1006;
+	font-weight: 600;
+}
+.change{
+	position: absolute;
+	top: 1%;
+	left: 14%;
+	font-weight: 400;
+	font-family: 'OpenSansRegular', sans-serif;
+	line-height: 22px;
+	font-size: 14px;
+}
+.MpriceTextBlock{
+	color: #3e1006;
+	margin: 0 0 0 3%;
+}
+.MpriceTextBlock p{
+	font-family: 'OpenSansRegular', sans-serif;
+	line-height: 22px;
+	font-size: 14px;
+	color: #3e1006;
+	font-weight: 400;
+}
+.MpriceTextBlock span{
+	color: #3e1006;
+	font-weight: 600;
+}
+
+.Mnumber{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	font-family: 'OpenSansBold', sans-serif;
+	line-height: 22px;
+	font-weight: 700;
+	margin: 0 0 0 3%;
+}
+.Mnumber span{
+	font-size: 14px;
+	color: #3e1006;
+}
+.Mnumber p{
+	font-size: 22px;
+	color: #3e1006;
+	font-weight: 600;
+}
+.priceBorder{
+	border: 4px solid #3e1006;
+	width: 85%;
+	margin: 9% 0 0 2%;
+}
+.priceBorder a{
+	padding: 6% 0;
+	width: 95.5%;
+	margin: 2% auto;
+	background-color: #3e1006;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	transition: background 0.3s;
+}
+.priceBorder a:hover{
+	background: #fff;
+}
+.priceBorder a:hover p{
+	color: #3e1006;
+}
+.priceBorder a:hover .modal_pricepoi{
+	background-color: #3e1006;
+}
+.priceBorder a p{
+	color: #fff;
+	font-size: 18px;
+	font-family: 'OpenSansS', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: color 0.3s;
+}
+.modal_pricepoi{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background-color: #fff;
+	margin: 0 6%;
+	transition: background-color 0.3s;
+}
+.afterText{
+	text-align: center;
+}
+.modalNow{
+	text-transform: uppercase;
+	color: #3E1006;
+	font-size: 20px;
+	font-family: 'OpenSansSemiBold';
+	font-weight: 600;
+	margin: 6% 0 0 -10%;
+	letter-spacing: -1px;
+}
+.modalSale{
+	color: #433E3D;
+	font-size: 15px;
+	font-family: 'OpenSansRegular';
+	font-weight: 400;
+	margin: 1% 0 8% -9%;
+}
+.modalPhone{
+	color: #3E1006;
+	font-size: 18px;
+	font-weight: 700;
+	font-family: 'OpenSansBold';
+	margin: 0 0 0 -7%;
+}
+
+
+
+
+
+
+
+
+
+
+/*--------------- -А-Д-А-П-Т-И-В- ----------------*/
+
+@media (max-width: 1800px){
+	.mainLogotip{
+	    width: 8%;
+	    margin: 0 0 0 1%;
+	}
+	.mainLogotip:hover{
+	    width: 8%;
+	    margin: 0 0 0 1%;
+	}
+	.captionText{
+		font-size: 66px;
+	}
+	.MpriceTitle{
+		font-size: 17px;
+	    line-height: 18px;
+	    margin: 6% 0 3% 1%;
+	}
+	.modalSale{
+		margin: 1% 0 5% -9%;
+	}
+	.textAndFormWrap{
+	    padding: 11% 0 0;
+	}
+	.zona{
+		left: 18%;
+		width: 26%;
+	}
+	.opacityBorder{
+		width: 65%;
+	}
+	.now{
+		margin: 6% 0 0 5%;
+	}	
+	#map{
+		padding-bottom: 32%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 32.2%;
+	}
+	.apparent{
+	    width: 24%;
+	}
+}
+
+@media (max-width: 1600px){
+	.captionText{
+		font-size: 64px;
+	}
+	.priceBorder{
+		margin-top: 7%;
+	}
+	.visible{
+		width: 48%;
+	}
+	.modal_allPriceText{
+		width: 100%;
+	}
+	.MpriceTitle{
+		margin: 6% 0 5% 1%;
+	}
+	.modalNow{
+		margin: 5% 0 0 -10%;
+	}
+	.modalSale{
+		margin: 0 0 5% -9%;
+	}
+	.Mnumber p{
+	    margin-right: 17%;
+	}
+	.now{
+		margin: 0 0 0 5%;
+	}
+	.forTextForm{
+		margin: 3% 0 0 1.5%;
+	}
+	.opacityText{
+		padding: 20% 0 0;
+	}
+	.mainForm{
+		padding: 2%;
+	}
+	#map{
+		padding-bottom: 37%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 37.2%;
+	}
+	.zona{
+		left: 13%;
+		width: 31%;
+	}
+	.instruments{
+		top: -12%;
+	    width: 26%;
+    	padding-bottom: 28%;
+	}
+	.footerLogo{
+		margin: 11% 0 1% 1.5%
+	}
+	.company{
+	    margin: 11% 0 0 12%;
+	}
+	.futuline{
+		margin: 11% 0 0 12%;
+	}
+	.apparent{
+	    width: 26%;
+	}
+	.bigButton a p{
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 1400px){
+	.navigation{
+		padding: 0 4% 0;
+	}
+	.navbar li a{
+	    font-size: 16px;
+	}
+	.caption{
+	    width: 85%;
+	}
+	.captionText {
+    	font-size: 60px;
+	}
+	.priceName{
+		font-size: 50px;
+	}
+	.visible{
+		width: 54%;
+	}
+	.firstCarousel{
+		margin: -3% 0 0 0;
+	}
+	.colorsText{
+		line-height: 35px;
+		font-size: 17px;
+	}
+	.change{
+		left: 15%;
+	}	
+	.MpriceTitle{
+		font-size: 16px;
+	}
+	.modalNow{
+	    font-size: 17px;
+	}
+	.Mnumber p{
+	    margin-right: 12%;
+	    font-size: 18px;
+	}
+	.priceBorder{
+		width: 90%;
+	}
+	.priceBorder a{
+		padding: 4% 0;
+	}
+	.priceBorder a p{
+		font-size: 16px;
+	}
+	#thersero{
+		margin: -4% auto 0;
+	}
+	.instruments{
+		display: none;
+	}
+	.thread{
+		display: none;
+	}
+	.textAndFormWrap{
+	    padding: 8% 0 0;
+	}
+	.nameTextForm{
+		font-size: 55px;
+	}
+	.forTextForm{
+	    font-size: 30px;
+    	line-height: 37px;
+    	margin: 1% 0 0 1.5%;
+	}
+	.now{
+		margin: 0 0 0 8%;
+	}
+	.arrow{
+	    top: 73%;
+	}	
+	.mainForm span{
+	    font-size: 45px;
+	}
+	.mainForm p{
+	    font-size: 35px;
+	}
+	.presentWrap{
+		margin: 0;
+	}
+	.presentText span{
+		font-size: 50px;
+    	line-height: 60px;
+	}
+	.presentText p{
+	    font-size: 30px;
+    	line-height: 40px;
+    	margin: 6% 0 0 0;
+	}
+	.commentHeader{
+		font-size: 50px;
+	}
+	.zona{
+		left: 12%;
+		width: 31%;
+	}	
+	.opacityText{
+		padding: 18% 0 0;
+	}
+	.contacts{
+		font-size: 50px;
+		padding: 1% 0 3%;
+	}
+	.review{
+		width: 95%;
+	    margin: 0 auto;
+	}
+	.opacityTextMargin{
+		padding: 6% 0 6%;
+	}
+	.opacityBorder{
+	    width: 69%;
+	}
+	#map{
+		padding-bottom: 35.5%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 35.7%;
+	}
+	.footerLogo{
+	    margin: 8% 0 0 1.5%;
+	}
+	.company{
+	    margin: 8% 0 0 0;
+	}
+	.futuline{
+	    margin: 8% 0 0 0;
+	}	
+	.apparent{
+	    width: 28%;
+	}
+	.bigButton a p{
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1250px){
+	.workZone{
+		width: 90%;
+	}
+	.navigation{
+		padding: 0 3% 0;
+	}
+	.navbar li a{
+		font-size: 14px;
+	}
+	.captionWrap{
+		margin: 5% 0 2%;
+	}
+	.captionText{
+		font-size: 50px;
+	}
+	.Border{
+		width: 29%;
+	}
+	.Border a p{
+		font-size: 19px;
+		margin: 0.3% 0 0;
+	}
+	.advantagesBlocks span{
+		font-size: 14px;
+	}
+	.advantagesBigText{
+		font-size: 13px;
+	}
+	.priceName{
+		font-size: 45px;
+	}
+	.priceBlock{
+		width: 30.2%;
+	}
+	.priceTitle{
+		font-size: 15px;
+	}
+	.priceTextBlock p{
+		font-size: 14px;
+	}
+	.number span{
+		font-size: 14px;
+	}
+	.number p{
+		font-size: 18px;
+		margin-top: -0.2%;
+	}
+	.priceModalText{
+		font-size: 14px;
+	}
+	.visible{
+		width: 56%;
+	}
+	.firstCarousel{
+		margin: 4% 0 0 0;
+	}
+	.modalText{
+	    padding: 0 0 0 2%;
+	}
+	.colorsText{
+		margin-left: 1%;
+	}
+	.MpriceTitle{
+		font-size: 15px;
+	}
+	.color{
+		font-size: 14px;
+	}
+	.change{
+		font-size: 14px;
+		top: 0;
+		left: 18%;
+	}
+	.MpriceTextBlock p{
+		font-size: 14px;
+	}
+	.Mnumber span{
+		font-size: 14px;
+	}
+	.Mnumber p{
+		margin-right: 12%;
+	    font-size: 18px;
+	}
+	.priceBorder a p{
+		font-size: 14px;
+	}
+	.modalSale{
+		margin: 0 0 4% -9%;
+	}
+	.modalPhone{
+		font-size: 16px;
+	}
+	.now{
+		width: 56%;
+		margin: -8% 0 0 8%;
+	}
+	.nameTextForm{
+		font-size: 45px;
+		margin: 0;
+	}
+	.forTextForm{
+		margin: 0 0 0 1.5%;
+		font-size: 28px;
+		width: 81%;
+		line-height: 30px;
+	}
+	.mainForm{
+		width: 28%;
+	}
+	.mainForm span{
+		font-size: 36px;
+	}
+	.mainForm p{
+	    font-size: 28px;
+	}
+	.forInput input{
+		font-size: 13px;
+		padding: 5% 0 5% 15%;
+	}
+	.zirochka{
+		top: 41%;
+	}
+	.formBorder a p{
+		font-size: 14px;
+	    margin-top: -2%;
+	}
+	.presentText span{
+	    font-size: 45px;
+	    line-height: 48px;
+	}
+	.presentText p{
+		font-size: 26px;
+	}
+	.pacunochok{
+	    width: 12%;
+	    padding-bottom: 13%;
+		margin-bottom: 3%;
+		left: 3%;
+	}
+	.comArrowText{
+		font-size: 15px;
+	}
+	.comArrow{
+		width: 8%;
+   		padding-bottom: 12%;
+	}
+	.contacts{
+		font-size: 45px;
+	    line-height: 60px;
+	}
+	.opacityText{
+		padding: 20% 0 0;
+	}
+	.opacityBorder{
+		width: 72%;
+	}
+	.reference p{
+	    font-size: 16px;
+	}
+	#map{
+		padding-bottom: 38%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 38.2%;
+	}
+	.footerLogo{
+	    margin: 10% 0 1% 1.5%;
+	}
+	.company{
+	    margin: 10% 0 1% 0;
+	}
+	.futuline{
+	    margin: 10% 0 1% 0;
+	}
+	.apparent{
+		width: 30%;
+	}
+}
+
+@media (max-width: 1100px){
+	.navbar li a{
+		font-size: 13px;
+	}
+	.captionText{
+		font-size: 45px;
+	}
+	.Border a p{
+		font-size: 15px;
+	}
+	.poi{
+		width: 7px;
+	    height: 7px;
+	    border-radius: 7px;
+	}
+	.advantagesBlocks span{
+		font-size: 13px;
+	}
+	.allPriceText{
+	    padding: 0 8% 0 8%;
+	}
+	.priceBlock{
+		margin: 3% 1.2% -1%;
+	}
+	.priceTextBlock p{
+		font-size: 13px;
+	}
+	.startButton{
+	    margin: 7% 0 0 0;
+	}
+	.priceModalText{
+		font-size: 14px;
+	}
+	.visible{
+		width: 64%;
+	}
+	.firstCarousel{
+		margin: 0;
+	}
+	.secondCarousel{
+		margin-top: 4%;
+	}
+	.colorsText{
+		margin-left: 3%;
+	}
+	.MpriceTitle{
+		margin: 6% 0 5% 3%;
+	}
+	.change{
+		top: -7%;
+	}
+	.priceBorder{
+		margin-top: 5%;
+	}
+	.nameTextForm{
+		font-size: 42px;
+	}
+	.forTextForm{
+		font-size: 25px;	
+	}
+	.mainForm span{
+		font-size: 32px;
+	}
+	.mainForm p{
+		font-size: 25px;
+	}
+	.formBorder a p{
+		font-size: 13px;
+	    margin-top: -1.5%;
+	}
+	.presentText span{
+	    font-size: 40px;
+	}
+	.presentText p{
+		font-size: 23px;
+    	line-height: 30px;
+    	margin: 3% 0 0 0;
+	}
+	.pacunochok{
+		left: -7%;
+	}
+	.commentHeader{
+	    font-size: 40px;
+	}
+	.comArrowText{
+		font-size: 13px;
+	}
+	.opacityBorder{
+		width: 68%;
+	}
+	.opacityBorder a p{
+		font-size: 12px;
+	}
+	.opacityPoi{
+		width: 5px;
+	    height: 5px;
+	    border-radius: 5px;
+	}
+	.reference p{
+	    font-size: 14px;
+	}
+	#map{
+		padding-bottom: 40%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 40.2%;
+	}
+	.bigButton a p{
+		font-size: 14px;
+	}
+	.bigInput input{
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1000px){
+	.navbar{
+	    width: 75%;
+	}
+	.captionWrap{
+		width: 84%;
+	}
+	.captionText{
+		font-size: 40px;
+	}
+	.advantagesBlocks{
+		width: 25.5%;
+	}
+	.priceName{
+		font-size: 40px;
+	}
+	.priceTitle{
+		font-size: 13px;
+	}
+	.visible{
+	    width: 72%;
+	}
+	.change{
+		top: 0%;
+    	left: 19%;
+	}
+	.priceBorder{
+		margin-top: 6%;
+	}
+	.modalSale{
+		margin: 1% 0 3% -9%;
+	}
+	.mainForm{
+	    width: 38%;
+    	margin-right: -4%;
+	}
+	.presentText span{
+	    line-height: 46px;
+	}
+	.presentText p{
+	    margin: 0 0 0 -1%;
+	}
+	.comArrowText{
+		font-size: 12px;
+	}
+	.opacityBorder{
+		width: 78%;
+	}
+	.apparent{
+		width: 34%;
+		padding: 2%;
+	}
+}
+
+/* Планшеты */
+@media (max-width: 900px){
+	.navbar{
+		display: none;
+	}
+	.gamburger{
+		display: block;
+	}
+	.captionText{
+		font-size: 35px;
+	}
+	.Border a p{
+		font-size: 13px;
+	}
+	.advantagesBlocks span{
+		font-size: 11px;
+	}
+	.advantagesBigText{
+		font-size: 12px;
+	}
+	.allPriceText{
+	    padding: 0 10% 0 10%;
+	}
+	.allImages{
+	    width: 78%;
+    	padding-bottom: 78%;
+	}
+	.priceName{
+	    padding: 28% 0 0;
+	}
+	.priceBlock{
+		width: 40%;
+		margin: 1% 1.2% 2%;
+	}
+	.link{
+	    width: 96%;
+    	margin: 2% auto;
+	}
+	.number p{
+		font-size: 18px;
+		margin-top: -1.2%;
+	}
+	.visible{
+	    width: 76%;
+	}
+	.previewActive{
+		box-shadow: 0 0 20px 5px #dad4cf;
+	}
+	.MpriceTitle{
+		font-size: 14px;
+		margin: 4% 0 3% 3%;
+	}
+	.change{
+    	left: 21%;
+	}
+	.nameTextForm{
+		font-size: 38px;
+	}
+	.now{
+		margin: -8% 0 0 5%;
+	}
+	.arrow{
+		display: none;
+	}
+	.mainForm{
+    	margin-right: 0;
+	}
+	.forInput{
+		margin-bottom: 3%;
+	}
+	.formBorder{
+	    margin-top: 5%;
+	}
+	#Gallery{
+		padding: 1% 0 0;
+	}
+	.commentHeader{
+	    font-size: 37px;
+	    line-height: 50px;
+	}
+	.comArrowDiv{
+		width: 16%;
+	}
+	.contacts{
+		font-size: 40px;
+	}
+	.opacityText{
+		font-size: 16px;
+    	line-height: 24px;
+	}
+	.zona{
+		left: 6%;
+		width: 38%;
+	}
+	#map{
+		padding-bottom: 46%;
+	}
+	.opacityMapBlock{
+		padding-bottom: 46.2%;
+	}
+	.apparent{
+		width: 40%;
+	}
+}
+
+/* Планшеты - телефоны */
+@media (max-width: 800px){
+	.mainLogotip{
+	    width: 9%;
+	    padding-bottom: 11%;
+	}
+	.mainLogotip:hover{
+	    width: 9%;
+	    padding-bottom: 11%;
+	}
+	.captionText{
+		font-size: 30px;
+	}
+	.Border{
+		width: 32%;
+	}
+	.advantages{
+		flex-direction: column;
+		width: 80%;
+	    margin: 3% auto 0;
+	}
+	.advantagesBlocks{
+		width: 100%;
+	}
+	.allaAdvImg{
+		width: 25%;
+	    padding-bottom: 25%;
+	    margin: 0 0 0 0;
+	}
+	.advantagesBlocks span{
+		font-size: 16px;
+		margin-top: 2%;
+    	margin-left: 0;
+	}
+	.advantagesBigText{
+		font-size: 16px;
+		width: 80%;
+	    margin: 1% 0 6%;
+	}
+
+	#price{
+		margin: -30% auto 0;
+	}
+	.priceName{
+		padding: 57% 0 0;
+		font-size: 45px;
+	}
+	.priceWrap{
+	    flex-direction: column;
+		width: 100%;
+		margin: 4% 0 10% 0;
+	}
+	.priceBlock{
+		width: 70%;
+		margin: 0 0 5%;
+		padding: 5%;
+	}
+	.allImages{
+		width: 100%;
+	    padding-bottom: 84%;
+	    margin-top: 0;
+	}
+	.allPriceText{
+		padding: 0;
+		margin: 7% 0;
+	}
+	.priceTitle{
+		font-size: 20px;
+	}
+	.priceTextBlock p{
+		font-size: 18px;
+	}
+	.number{
+		margin: 2% 0 0 0;
+	}
+	.number span{
+		font-size: 18px;
+	}
+	.number p{
+		font-size: 24px;
+		margin-top: -1%;
+	}
+	.startButton{
+		width: 100%;
+        margin: 0;
+	}
+	.link{
+	    width: 98%;
+    	margin: 1% auto;
+    	padding: 3% 0;
+	}
+	.priceModalText{
+		font-size: 18px;
+	}
+
+	.visible{
+	    width: 60%;
+	}
+	.content{
+		flex-direction: column;
+	    padding: 7% 7% 4%;
+	}
+	.krest{
+		width: 3%;
+		padding-bottom: 3%;
+		top: 1%;
+	}
+	.arrowLeft{
+	    top: 21%;
+    	left: 3%;
+    	padding-bottom: 5%;
+	}
+	.arrowLeft:hover{
+		left: 2%;
+	}
+	.arrowRight{
+		top: 21%;
+    	left: 94%;
+    	padding-bottom: 5%;
+	}
+	.arrowRight:hover{
+		left: 95%;
+	}
+	.twoCarousels{
+		width: 100%;
+	}
+	.firstCarousel{
+		width: 100%;
+	}
+	.secondCarousel{
+		width: 100%;
+	    margin-top: 2%;
+	}
+
+
+
+	.modalText{
+		width: 100%;
+	    padding: 0;
+        margin: 2% 0 0 0;
+	}
+	.tabs{
+	    margin: 0 0 0 19%;
+	}	
+	.colorsText{
+		font-size: 20px;
+		margin: 0;
+	}
+	.MpriceTitle{
+		font-size: 20px;
+		text-align: center;
+		margin: 5% 0 3% 0;
+	}
+	.MpriceTextBlock{
+		margin: 0;
+	}
+	.color{
+		font-size: 18px;
+		line-height: 30px;
+	}	
+	.change{
+		font-size: 18px;
+		line-height: 30px;
+		top: 0%;
+    	left: 14%;
+	}	
+	.MpriceTextBlock p{
+		font-size: 18px;
+		line-height: 30px;
+	}	
+	.Mnumber{
+		margin: 0;
+	}	
+	.Mnumber span{
+		font-size: 18px;
+		line-height: 30px;
+	}
+	.Mnumber p{
+		padding: 0;
+		margin: 0;
+		font-size: 24px;
+		line-height: 30px;
+	}
+	.priceBorder{
+		width: 100%;
+	    margin: 5% 0 0 0;
+	}
+	.priceBorder a{
+	    padding: 3% 0;
+	}
+	.priceBorder a p{
+	    font-size: 20px;
+	}
+	.modalNow{
+		font-size: 20px;
+		margin: 5% 0 0 0;
+	}
+	.modalSale{
+		font-size: 18px;
+		margin: 0 0 4% 0;
+	}
+	.modalPhone{
+		font-size: 18px;
+	}
+
+
+
+	#thersero{
+	    margin: -8% auto 0;
+	    padding: 0;
+	}
+	.textAndFormWrap{
+		width: 100%;
+		flex-direction: column;
+		padding: 0;
+	    margin: 0;
+	}
+	.now{
+		width: 100%;
+		margin: 0;
+		padding: 17% 0 0 0;
+	}
+	.nameTextForm{
+		text-shadow: 1px 0px 0px #3E1006;
+		width: 100%;
+		text-align: center;
+		padding: 0;
+	}
+	.forTextForm{
+		margin: 1% 0 0 0;
+		text-shadow: 1px 0px 0px #3E1006;
+		width: 100%;
+	    text-align: center;	
+	}
+	.mainForm{
+	    width: 50%;
+    	margin: 3% 0 30% 0;
+		padding: 3%;
+	    border-radius: 5%;
+	}
+	.forInput{
+	    width: 100%;
+	    margin-bottom: 5%;
+	}
+	.forInput input{
+	    font-size: 16px;
+		padding: 6% 0 6% 13%;
+	}
+	.formBorder a p{
+		font-size: 18px;
+	}
+
+
+	#present{
+		padding: 0 0 8%;
+	}
+	.presentWrap{
+	    flex-direction: column-reverse;
+	    align-items: center;
+	    margin: -14% 0 0;
+	}
+	.bag{
+		width: 70%;
+    	padding-bottom: 70%;
+    	margin: 0;
+	}
+	.presentText{
+		width: 90%;
+    	text-align: center;
+	}
+	.presentText p{
+	    margin: 0;
+	}
+	.pacunochok{
+	  	display: none;
+	}
+
+
+
+	.commentsText{
+		margin: 3% 0;
+	}
+	.commentHeader{
+	    font-size: 32px;
+	    line-height: 40px;
+	}
+	.comArrowDiv{
+		width: 20%;
+	}
+	.comArrowText{
+		font-size: 15px;
+	}
+
+
+	.opacityMapBlock{
+		width: 100%;
+		opacity: 1;
+	    position: relative;
+	    padding-bottom: 58%;
+	}
+	.zona{
+		left: 0;
+		width: 100%;
+	}	
+	.opacityText{
+		text-align: center;
+		padding: 5% 0 0;
+		font-size: 18px;
+	}
+	.contacts{
+	    font-size: 45px;
+	    line-height: 30px;
+		padding: 5% 0;
+	}
+	.opacityTextMargin{
+		padding: 4% 0;
+	}
+	.opacityBorder{
+		width: 40%;
+		margin: 0 0 50% 30%;
+	}
+	.reference p{
+		font-size: 18px;
+	}
+	#map{
+		top: 90%;
+	    padding-bottom: 56%;
+	}
+	.footerWrap{
+		flex-direction: column;
+	}
+	.footerLogo{
+		margin: 12% 0 1% 1.5%;
+		width: 15%;
+    	padding-bottom: 15%;
+	}
+	.company{
+		margin: 0 0 1% 0;
+	    font-size: 18px;
+	}
+	.futuline{
+		margin: 0 0 3% 0;
+	    font-size: 18px;
+	}
+}
+
+/* Телефоны */
+@media (max-width: 700px){
+	.mainLogotip{
+	    width: 10%;
+	    padding-bottom: 12%;
+	}
+	.mainLogotip:hover{
+	    width: 10%;
+	    padding-bottom: 12%;
+	}
+	.gamburger{
+		width: 7%;
+	}
+	.burger_line{
+	    padding-bottom: 5px;
+		margin-bottom: 4px;
+	}
+	.concealed_navbar li{
+		margin-bottom: 2%;
+	}
+	.concealed_navbar li a{
+		font-size: 16px;
+	}
+	.caption{
+		width: 90%;
+	}
+	.captionText{
+		font-size: 28px;
+	}
+	.Border{
+	    width: 34%;
+	}
+	.Border a p{
+		font-size: 12px;
+	}
+	.poi{
+		width: 5px;
+	    height: 5px;
+	    border-radius: 5px;
+	}
+	.advantagesBlocks span{
+	    font-size: 14px;
+	}
+	.advantagesBigText{
+	    font-size: 14px;
+	}
+	.priceName{
+		font-size: 40px;
+	}
+	.priceTitle{
+		    font-size: 18px;
+	}
+	.priceTextBlock p{
+		font-size: 16px;
+	}
+	.number span{
+		font-size: 16px;
+	}
+	.number p{
+		font-size: 22px;
+	}
+	.content{
+		padding: 4% 7% 4%;
+	}
+	.priceModalText{
+		font-size: 16px;
+	}
+	.colorsText{
+	    font-size: 18px;	
+	}
+	.MpriceTitle{
+	    font-size: 18px;
+	}
+	.change{
+	    font-size: 16px;
+	    line-height: 25px;
+	    top: -4%;
+	}
+	.color{
+	    font-size: 16px;
+	    line-height: 25px;
+	}
+	.MpriceTextBlock p{
+	    font-size: 16px;
+	    line-height: 25px;
+	}
+	.Mnumber span{
+	    font-size: 16px;
+	    line-height: 25px;
+	}
+	.Mnumber p{
+	    font-size: 18px;
+	    line-height: 25px;
+	}
+	.priceBorder a p{
+		font-size: 16px;
+	}
+	.modalNow{
+	    font-size: 18px;
+	}
+	.modalSale{
+		font-size: 16px;
+	}
+	.modalPhone{
+		font-size: 16px;
+	}
+	.nameTextForm{
+		font-size: 35px;
+	}
+	.forTextForm{
+		font-size: 22px;
+	}
+	.forInput input{
+		font-size: 14px;
+	}
+	.formBorder a p{
+		font-size: 15px;
+	}
+	.formPoint{
+		width: 5px;
+	    height: 5px;
+	    border-radius: 5px;
+	}
+	.presentText span{
+	    font-size: 35px;
+	}
+	.presentText p{
+	    font-size: 20px;
+	}
+	.commentHeader{
+		width: 70%;
+		font-size: 30px;
+	}
+	.comArrowDiv{
+	    width: 22%;
+	}
+	.comArrowText{
+		font-size: 14px;
+	}
+	.carouselTextName{
+	    font-size: 16px;
+	}
+	.carouselTextParagraph{
+		margin-top: 2%;
+	}
+	.opacityText{
+		font-size: 16px;
+	}
+	.reference p{
+		font-size: 15px;
+	}
+	.opacityMapBlock{
+	    padding-bottom: 62%;
+	}
+	.company{
+		font-size: 16px;
+	}
+	.futuline{
+		font-size: 16px;
+	}
+	.apparent{
+		width: 50%;
+		padding: 3% 5%;
+	}
+	.apparent span{
+	    font-size: 25px;
+    	line-height: 28px;
+	}
+	.bigButton{
+		width: 100%;
+	}
+}
+
+@media (max-width: 600px){
+	.mainLogotip{
+	    width: 11%;
+	    padding-bottom: 13%;
+	}
+	.mainLogotip:hover{
+	    width: 11%;
+	    padding-bottom: 13%;
+	}
+	.burger_line{
+	    padding-bottom: 4px;
+	    margin-bottom: 3px;
+	}
+	.concealed_navbar li a{
+		font-size: 16px;
+	    line-height: 20px;
+	}
+	.captionWrap{
+	    width: 94%;
+	}
+	.captionText{
+		font-size: 25px;
+	}
+	.Border{
+	    width: 39%;
+	}
+	.advantagesBlocks span{
+	    font-size: 13px;
+	}
+	.advantagesBigText{
+		font-size: 13px;
+		line-height: 16px;
+	}
+	.allaAdvImg{
+	    width: 30%;
+   		padding-bottom: 30%;
+	}
+	.priceName{
+		font-size: 32px;
+	}
+	.priceBlock{
+		width: 75%;
+	}
+	.priceTextBlock p, .number span, .priceModalText, .color, .change, .MpriceTextBlock p, .Mnumber span, .priceBorder a p, .modalSale, .modalPhone {
+		font-size: 14px;
+	}
+	.number p{
+		font-size: 18px;
+	}
+	.pricepoi, .modal_pricepoi{
+	    width: 5px;
+	    height: 5px;
+	    border-radius: 5px;
+	}
+	.visible{
+		width: 70%;
+	}
+	.arrowLeft{
+		top: 20%;
+	}
+	.arrowRight{
+		top: 20%;
+	}
+	.priceTitle, .colorsText, .MpriceTitle, .modalNow, .presentText p{
+		font-size: 16px;
+	}
+	.nameTextForm{
+		font-size: 30px;
+	}
+	.forTextForm{
+		font-size: 18px;
+	}
+	.now{
+		padding: 20% 0 0 0;
+	}
+	.mainForm{
+	    width: 62%;
+	    margin: 3% 0 38% 0;
+	}
+	.mainForm span{
+		font-size: 30px;
+	}
+	.mainForm p{
+		font-size: 24px;
+	}
+	.presentText span{
+		font-size: 30px;
+	}
+	.commentHeader{
+		width: 100%;
+		margin: 0;
+		text-align: center;
+	    font-size: 30px;
+	}
+	.commentsText{
+	    flex-direction: column;
+	}
+	.comArrowDiv{
+		width: 100%;
+		margin: 3% 0;
+	}
+	.comArrowText{
+		width: 32%;
+		text-align: center;
+	}
+	.comArrow{
+		width: 4%;
+		padding-bottom: 3%;
+		position: relative;
+		right: 5%;
+		margin: 0;
+	}
+	.carouselTextName{
+		font-size: 15px;
+	}
+	.opacityText{
+		padding: 7% 0 0;
+	}
+	.contacts{
+	    font-size: 35px;
+	    line-height: 30px;
+	}
+	.opacityBorder{
+		width: 44%;
+	    margin: 0 0 50% 28%;
+	}
+	.reference{
+		padding: 3% 0;
+	}
+	.reference p, .company, .futuline, .opacityText, .formBorder a p{
+		font-size: 14px;
+	}
+	.opacityMapBlock{
+		padding-bottom: 66%;
+	}
+	#map{
+	    padding-bottom: 70%;
+	}
+	.footerLogo{
+		margin: 29% 0 1% 1.5%;
+	}
+	.apparent span{
+		font-size: 22px;
+	    line-height: 22px;
+	}
+	.bigInput input{
+	    font-size: 12px;
+	}
+	.bigButton a{
+		padding: 3% 0;
+	}
+	.bigButton a p{
+		font-size: 12px;
+	}
+	.circle{
+	    width: 5px;
+	    height: 5px;
+	    border-radius: 5px;
+	}
+	.apparent {
+    	width: 56%;
+	}
+}
+
+@media (max-width: 500px){
+	.mainLogotip{
+		width: 14%;
+		padding-bottom: 14%;
+	}
+	.mainLogotip:hover{
+	    width: 14%;
+	    padding-bottom: 14%;
+	}
+	.gamburger{
+		width: 9%;
+	}
+	.concealed_navbar li a{
+		font-size: 15px;
+	}
+	.captionWrap {
+	    width: 100%;
+	}
+	.caption {
+	    width: 100%;
+	    padding-bottom: 40%;
+	}
+	.captionText {
+	    font-size: 24px;
+	}
+	.Border{
+		width: 50%;
+	}
+	.Border a{
+		padding: 4% 0;
+	}
+	.advantagesBlocks span, .advantagesBigText{
+		font-size: 12px;
+	}
+	.allaAdvImg{
+	    width: 35%;
+   		padding-bottom: 35%;
+	}
+	#price {
+	    margin: -50% auto 0;
+	}
+	.priceName{
+	    font-size: 28px;
+		padding: 75% 0 0;
+	}
+	.priceBlock {
+	    width: 90%;
+	    margin: 0 0 8%;
+	}
+	.priceTitle {
+	    font-size: 15px;
+	}
+	.krest{
+		width: 4%;
+		padding-bottom: 4%;
+	}
+	.visible{
+		width: 80%;
+	}
+	.modalText{
+		margin: 0;
+	}
+	.tabs {
+	    margin: 0 0 0 14%;
+	}
+	.MpriceTitle {
+	    font-size: 15px;
+	    margin: 3% 0 3% 0;
+	}
+	.color, .MpriceTextBlock p, .Mnumber, .Mnumber span, .Mnumber p, .change{
+		line-height: 20px;
+	}
+	.change{
+		left: 16%;
+	}
+	#thersero{
+		margin: -11% auto 0;
+	}
+	.now{
+	    padding: 24% 0 0 0;
+	}
+	.nameTextForm{
+		font-size: 28px;
+	}
+	.forTextForm{
+		font-size: 16px;
+	}
+	.mainForm{
+	    width: 80%;
+	    margin: 3% 0 48% 0;
+	}
+	.mainForm span{
+		font-size: 25px;
+	}
+	.mainForm p{
+		font-size: 20px;
+	}
+	.forInput input{
+		font-size: 13px;
+	}
+	.formBorder a{
+		padding: 5% 0;
+	}
+	#present{
+	    padding: 0;
+	}
+	.presentText span{
+		font-size: 28px;
+	}
+	.presentText p{
+	    font-size: 14px;
+	    line-height: 18px;
+	}
+	.commentsText{
+	    margin: 3% 0 1%;
+	}
+	.commentHeader{
+		font-size: 28px;
+	}
+	.comArrowText{
+	    font-size: 13px;
+	    width: 36%;
+	}
+	.bloc{
+	    flex-direction: column;
+	}
+	.carouselImage{
+	    width: 25%;
+	    padding-bottom: 25%;
+	    border-radius: 50%;
+	    margin-left: 37%;
+	}
+	.carouselText{
+		width: 100%;
+		text-align: center;
+	}
+	.carouselTextName{
+	    width: 100%;
+	    margin-top: 2%;
+	}
+	.carouselTextParagraph{
+		padding: 0;
+	}
+	.opacityMapBlock{
+		padding-bottom: 80%;
+	}
+	.opacityBorder{
+		width: 54%;
+	    margin: 0 0 50% 23%;
+	}
+	#map{
+		padding-bottom: 80%;
+	}
+	.footerLogo{
+	    margin: 40% 0 1% 1.5%;
+	}
+	.apparent{
+		width: 70%;
+	}
+}
+
+@media (max-width: 400px){
+	.mainLogotip{
+    	width: 16%;
+    	padding-bottom: 16%;
+	}
+	.mainLogotip:hover{
+	    width: 16%;
+	    padding-bottom: 16%;
+	}
+	.gamburger {
+	    width: 11%;
+	}
+	.captionText {
+	    font-size: 19px;
+	}
+	.Border {
+	    width: 62%;
+	}
+	.allaAdvImg{
+		width: 40%;
+	    padding-bottom: 40%;
+	}
+	.concealed_navbar li{
+	    margin-bottom: 2%;
+	}
+	.concealed_navbar li a{
+		font-size: 14px;
+	    line-height: 18px;
+	}
+	.priceName{
+		padding: 86% 0 0;
+	}
+	.priceTitle {
+	    font-size: 14px;
+	}
+	.priceTextBlock p, .number span, .priceModalText{
+		font-size: 12px;
+	    line-height: 16px;
+	}
+	.number{
+		line-height: 16px;
+	}
+	.number p{
+		font-size: 15px;
+	}
+	.MpriceTitle{
+		font-size: 14px;
+	}
+	.MpriceTextBlock{
+		font-size: 12px;
+	}
+	.MpriceTextBlock p{
+		font-size: 12px;
+		line-height: 16px;
+	}
+	.Mnumber p{
+		font-size: 16px;
+		line-height: 16px;
+	}
+	.modalNow{
+		font-size: 14px;
+	}
+	.nameTextForm{
+		font-size: 24px;
+	}
+	.forTextForm{
+		line-height: 20px;
+	}
+	.mainForm span{
+		font-size: 22px;
+	}
+	.mainForm{
+		width: 86%;
+		padding: 5%;
+	    margin: 3% 0 51% 0;
+	}
+	.formBorder a p, .forInput input{
+		font-size: 12px;
+	}
+	.presentText span{
+		font-size: 25px;
+		line-height: 31px;
+	}
+	.commentHeader{
+		font-size: 25px;
+	}
+	.comArrowText{
+		width: 42%;
+	}
+	.comArrow{
+		width: 4%;
+	    padding-bottom: 5%;
+	}
+	.carouselImage{
+		width: 35%;
+	    padding-bottom: 35%;
+	    margin-left: 33%;
+	}
+	.carouselTextName{
+		font-size: 14px;
+	}
+	.carouselTextParagraph{
+		font-size: 12px;
+	}
+	.contacts {
+	    font-size: 30px;
+	    line-height: 25px;
+	}
+	.opacityText{
+		font-size: 12px;
+	}
+	.opacityBorder {
+	    width: 58%;
+	    margin: 0 0 50% 21%;
+	}
+	.reference p{
+		font-size: 12px;
+	}
+	.opacityMapBlock {
+	    padding-bottom: 88%;
+	}
+	#map {
+	    padding-bottom: 90%;
+	}
+	.footerLogo {
+	    margin: 60% 0 1% 0;
+	}
+	.company, .futuline{
+	    font-size: 12px;
+	}
+}
+
+@media (max-width: 320px){
+	.reference{
+	    padding: 2% 0;
+	}
+	.apparent {
+    	width: 80%;
+	}
+	#map {
+	    padding-bottom: 97%;
+	}
+	.footerLogo{
+	    width: 20%;
+    	padding-bottom: 20%;	
+	}
+}
